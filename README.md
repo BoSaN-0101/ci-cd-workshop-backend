@@ -4,7 +4,9 @@ Todo List API，使用 FastAPI + SQLAlchemy 2.0 + PostgreSQL，以 Alembic 管�
 
 ## 本機開發
 
-需求：[uv](https://docs.astral.sh/uv/)（會自動安裝 Python 3.12）、Docker。
+需求：[uv](https://docs.astral.sh/uv/) 0.12 以上（會自動安裝 Python 3.12）、Docker。
+
+`docker compose up -d db` 會把 PostgreSQL 開在 `127.0.0.1:5432`（可用 `DB_PORT` 調整），預設的 `DATABASE_URL` 即可直接連線。
 
 ```bash
 uv sync
@@ -44,6 +46,7 @@ curl http://localhost:8000/api/health
 | `CORS_ORIGINS` | `["http://localhost:5173","http://localhost:8080"]` | 允許的前端來源（JSON 陣列） |
 | `POSTGRES_USER` / `POSTGRES_PASSWORD` / `POSTGRES_DB` | `todo` | docker compose 中 PostgreSQL 的設定 |
 | `API_PORT` | `8000` | docker compose 對外的 port |
+| `DB_PORT` | `5432` | docker compose 中 PostgreSQL 開在本機的 port（只綁 127.0.0.1） |
 
 ## API
 
